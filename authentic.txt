@@ -1,0 +1,3 @@
+#--AccessToken
+HFInference = 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
+archivo a extraer = ///C:/Users/seba_/OneDrive/Escritorio/practica/Muestras%20boletas%20Feb%202021.pdf
