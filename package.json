@@ -1,1 +1,27 @@
-{"name":"lector","version":"1.0.0","main":"src/index.js","type":"commonjs","scripts":{"dev":"nodemon src/extractor.ts","build":"npx tsc","start":"node dist/extractor.js"},"keywords":[],"author":"","license":"ISC","description":"","dependencies":{"@huggingface/inference":"^2.6.6","blob":"^0.1.0","bootstrap":"^5.3.3","dotenv":"^16.4.5","transformers":"^3.1.0"},"devDependencies":{"@types/node":"^20.12.7","nodemon":"^3.1.0","ts-node":"^10.9.2","typescript":"^5.4.5"}}
+{
+    "name": "lector",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "type": "commonjs",
+    "scripts": {
+        "dev": "nodemon src/extractor.ts",
+        "build": "npx tsc",
+        "start": "node dist/extractor.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@huggingface/inference": "^2.6.6",
+        "bootstrap": "^5.3.3",
+        "dotenv": "^16.4.5",
+        "transformers": "^3.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.7",
+        "nodemon": "^3.1.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
+}

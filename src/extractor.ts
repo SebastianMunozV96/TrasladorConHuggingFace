@@ -15,15 +15,15 @@ const main = async () => {
   );
 
   try {
-    const img = await readMyFile(imagePath);
+    const img : Buffer = await readMyFile(imagePath);
     // const img = await readMyFile(imgFetch);
 
     const result = await hf.documentQuestionAnswering({
       model,
       inputs: {
         question: "What is the net total amount?",
-        image: new Blob([img!], { type: 'image/jpeg' }),
-        // image: await imgFetch.arrayBuffer(),
+        image: new Blob([img], { type: 'image/jpeg' }), // <- archivo local
+        // image: await imgFetch.arrayBuffer(), // <- archivo remoto
       },
     });
 
