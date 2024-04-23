@@ -16,7 +16,8 @@
         "@huggingface/inference": "^2.6.6",
         "bootstrap": "^5.3.3",
         "dotenv": "^16.4.5",
-        "transformers": "^3.1.0"
+        "pdf2pic": "^3.1.1",
+        "transformers": "^1.8.3"
     },
     "devDependencies": {
         "@types/node": "^20.12.7",
