@@ -137,7 +137,8 @@ dist
 .webpack/
 
 # Optional stylelint cache
-
+# env Point
+.env
 # SvelteKit build / generate output
 .svelte-kit
 
