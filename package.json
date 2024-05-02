@@ -4,9 +4,9 @@
     "main": "src/index.js",
     "type": "commonjs",
     "scripts": {
-        "dev": "nodemon src/extractor.ts",
+        "dev": "nodemon src/extractor0.ts",
         "build": "npx tsc",
-        "start": "node dist/extractor.js"
+        "start": "node dist/extractor0.js"
     },
     "keywords": [],
     "author": "",
