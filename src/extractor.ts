@@ -1,36 +1,37 @@
-import * as  fs from 'fs';
-import * as pdf  from 'pdf-parse'
-import { HfInference } from '@xenova/inference';
-import { pipeline } from '@xenova/transformers';
-import dotenv from "dotenv"  
+import  {config} from 'dotenv'  ;
+import fs from 'fs/promises';
 
-dotenv.config()
+config()
 
+const projectID = process.env.projectID
+const location = process.env.location
+const procesorID = process.env.proccesorID
 
-async function main() {
+ const filePath = 'Factura.pdf';
 
- const pdfPath = "./Factura.pdf";
- const dataBuffer  = fs.readFileSync(pdfPath)
- const  pdfText:string = dataBuffer.toString();
+  const {DocumentProcessorServiceClient} =
+  require('@google-cloud/documentai').v1;
 
- console.log(pdfText)
+  const cliente = new DocumentProcessorServiceClient();
 
- const HFToken = process.env.HF
- const hf  = new HfInference(HFToken);
+  async function  processDocument() {
+  const name =`projects/${projectID}/locations/${location}/processors${procesorID}`   
 
- try {
-    const result  = await hf.questionAnswering({
-        model:'deepset/roberta-base-squad2',
-        inputs:{
-           question:'Cual es el Total Neto',
-           context:pdfText
-        }
-    });
-     console.log(result)
- } catch (error) {
-    console.log('Error a la peticion de IA ')
- }
-    
-};
+   const imageFile = await fs.readFile(filePath)
+   const encodeImage = Buffer.from(imageFile).toString('base64');
 
-main();
+   const request ={
+    name,
+    rawDocument:{
+        content:encodeImage,
+        MimeType:'application/pdf'
+    }
+   }
+  
+   const [result] = await cliente.processDocument(request);
+   const {document} = result;
+ 
+   const {text} = document;
+ 
+   console.log('texto y documento : ',text , document)
+  }

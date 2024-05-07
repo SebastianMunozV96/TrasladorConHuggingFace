@@ -2,27 +2,28 @@
     "name": "lector",
     "version": "1.0.0",
     "main": "src/index.js",
-    "type": "commonjs",
+    "type": "module",
     "scripts": {
-        "dev": "nodemon src/extractor0.ts",
+        "dev": "nodemon src/extractor.ts",
         "build": "npx tsc",
-        "start": "node dist/extractor0.js"
+        "start": "node dist/extractor.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "@huggingface/inference": "^2.6.6",
         "axios": "^1.6.8",
         "bootstrap": "^5.3.3",
         "docquery": "^1.2.1",
         "dotenv": "^16.4.5",
         "pdf-parse": "^1.1.1",
+        "pdf-parse2": "^1.0.4",
         "pdf2pic": "^3.1.1",
         "transformers": "^1.8.3"
     },
     "devDependencies": {
+        "@huggingface/inference": "^2.6.7",
         "@types/node": "^20.12.7",
         "@types/pdf-parse": "^1.1.4",
         "@xenova/transformers": "^2.17.1",

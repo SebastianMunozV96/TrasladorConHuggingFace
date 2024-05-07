@@ -14,7 +14,7 @@ async function main() {
     const workerID = process.env.WORKER
     const url = "https://worker.formextractorai.com/v2/extract"
 
-    const pdfFile: string = path.resolve(__dirname, '../', "src", "Factura.pdf");
+    const pdfFile: string = path.resolve(__dirname, '../', "src", "Page.pdf");
     console.log(pdfFile)
     const pdfBuffer = await readMyFile(pdfFile)
     const pdfBase64 = Buffer.from(pdfBuffer).toString('base64')
@@ -53,22 +53,21 @@ async function main() {
         // const pdfString = JSON.stringify()
     }
 
-
     console.log("###################################")
-    const hfEnv = process.env.HF
+    const hfEnv = process.env.TOKEN_hf
     const hf: HfInference = new HfInference(hfEnv);
     // const model = "bert-base-uncased";
-    const model = "meta-llama/Meta-Llama-3-8B";
+    const model = "deepset/roberta-base-squad2";
     const pdfTexto = await getTextFromPdf(pdfBuffer)
     const context: string = tokenizar(pdfTexto)
-    console.log("contexto ", context)
+    console.log("contexto: ", context)
 
     try {
         const result = await hf.questionAnswering({
             model: model,
             inputs: {
                 context: context,
-                question: 'Cual es el monto Neto',
+                question: 'Cual es el monto Neto?',
             }
         });
         console.log(result)
@@ -76,9 +75,5 @@ async function main() {
         console.log("Error en peticion")
         console.log('detalle error ', error)
     }
-
-
-
-
 }
 main()

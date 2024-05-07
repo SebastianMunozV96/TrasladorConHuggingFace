@@ -16,8 +16,6 @@
 //   // const model = "Salesforce/blip-image-captioning-large";
 //   const model = "vikhyatk/moondream2";
 //   // Aquí puedes hacer lo que necesites con los datos de la imagen
-
- 
 //   try {
 //     const img: Buffer = await readMyFile(pdfFile);
 //     // const img = await readMyFile(imgFetch);
